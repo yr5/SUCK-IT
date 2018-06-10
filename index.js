@@ -2,8 +2,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client({disableEveryone: true});
 const fs = require("fs");
-const userData = JSON.parse(fs.readFileSync('/json files/userData.json', 'utf8'));
-const Level = JSON.parse(fs.readFileSync('/json files/level.json', 'utf8'));
+const userData = JSON.parse(fs.readFileSync('./json files/userData.json', 'utf8'));
+const Level = JSON.parse(fs.readFileSync('./json files/level.json', 'utf8'));
 var Canvas = require('canvas')
 var jimp = require('jimp')
 const moment = require('moment');
@@ -55,7 +55,7 @@ if (message.content.startsWith(prefix + 'فكك')) {
 
 
 
-const type = require('/fkk/fkk.json');
+const type = require('./fkk/fkk.json');
 const item = type[Math.floor(Math.random() * type.length)];
 const filter = response => {
     return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
