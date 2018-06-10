@@ -47,7 +47,6 @@ if (message.content.startsWith(prefix + 'فكك')) {
 
 
 
-const c = require('./images_profile/1.png');
 const type = require('./fkk/fkk.json');
 const item = type[Math.floor(Math.random() * type.length)];
 const filter = response => {
