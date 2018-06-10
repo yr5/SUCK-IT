@@ -76,5 +76,5 @@ if (message.content.startsWith(prefix + "point")) {
 	message.reply(qEmbed)
 };
 });
-
+ 
 client.login(process.env.TOKEN);
