@@ -221,7 +221,7 @@ client.on("message",  message => {
 
     let ctxx = canvas.getContext('3d')
     let Images = Canvas.Image
-    fs.readFile(__dirname + '/images_profile/1.png', function(err, picture) { 
+    fs.readFile(w, function(err, picture) { 
       if (err) throw err
       var img = new Images
       img.onload = () => {
@@ -232,7 +232,7 @@ client.on("message",  message => {
      
     let ctx = canvas.getContext('2d')
     let Image = Canvas.Image
-    fs.readFile(__dirname + './images_profile/1.png', function(err, picture) { 
+    fs.readFile(w, function(err, picture) { 
     if (err) throw err
     var img = new Image
     img.onload = () => {
@@ -288,7 +288,7 @@ client.on("message",  message => {
                         ctx.drawImage(ava, 13, 60, 175, 175);
 
     setTimeout(function() {
-      fs.readFile(__dirname + './images_profile/1.png', function(err, picture) {
+      fs.readFile(w, function(err, picture) {
         if (err) throw err
         var img = new Image
         img.onload = () => {
