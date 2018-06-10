@@ -68,6 +68,11 @@ msg.channel.send('``' + `${item.type}` + '``').then(() => {
 
 client.on("message", function(message){
 if (message.content.startsWith(prefix + "point")) {
+		let pEmbed = new Discord.RichEmbed()
+	.setColor("Random")
+	.addField("نقاطك:" + '``' + Math.floor(userData[message.author.id].money) + '``')
+	.setFooter('BY : RAIZER')
+		
     if(!userData[message.author.id]) {
        userData[message.author.id] = {
            money: 0
