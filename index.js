@@ -44,10 +44,7 @@ const filter = response => {
 
 message.channel.send('**لديك 15 ثانيه لتفكيك الكلمه**').then(msg => {
 
-	let pEmbed = new Discord.RichEmbed()
-	.setColor("Random")
-	.addField("نقاطك:" + '``' + Math.floor(userData[message.author.id].money) + '``')
-	.setFooter('BY : RAIZER')
+	
             	
 msg.channel.send('``' + `${item.type}` + '``').then(() => {
         message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
@@ -78,7 +75,7 @@ if (message.content.startsWith(prefix + "point")) {
            money: 0
        }
     }
-	message.reply(qEmbed)
+	message.reply(pEmbed)
 };
 });
  
