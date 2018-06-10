@@ -18,18 +18,7 @@ client.on('ready', () => {
 
 
 
-const Discord = require('discord.js');
-const client = new Discord.Client({disableEveryone: true});
-const fs = require("fs");
-const userData = JSON.parse(fs.readFileSync('./json files/userData.json', 'utf8'));
-const Level = JSON.parse(fs.readFileSync('./json files/level.json', 'utf8'));
-var Canvas = require('canvas')
-var jimp = require('jimp')
-const moment = require('moment');
-const pretty = require('pretty-ms');
-const rn = require('random-number');
-let done = {};
-var prefix = "f!"
+
 
 
 client.on('message', function(message) {
