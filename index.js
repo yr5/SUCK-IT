@@ -22,7 +22,6 @@ client.on('ready', () => {
 
 
 client.on('message', message => {
-    let sender = message.author;
 	if (message.author.bot) return null;
 let sender = message.author;
 let msg = message.content.toUpperCase();
