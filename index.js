@@ -24,9 +24,7 @@ client.on('ready', () => {
 client.on('message', function(message) {
       const member = message.member;
 
-if(message.member.voiceChannel(member.guild.channels.get('438812681667870742'))) {
-            message.member.addRole(message.guild.roles.find("name", "PoP"));
-    }
+
 });
 
 client.on('ready', () => {
