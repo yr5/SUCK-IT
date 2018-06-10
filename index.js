@@ -47,7 +47,7 @@ if (message.content.startsWith(prefix + 'فكك')) {
 
 
 
-
+const c = require('./images_profile/1.png');
 const type = require('./fkk/fkk.json');
 const item = type[Math.floor(Math.random() * type.length)];
 const filter = response => {
@@ -232,7 +232,7 @@ client.on("message",  message => {
      
     let ctx = canvas.getContext('2d')
     let Image = Canvas.Image
-    fs.readFile(__dirname + '/images_profile/1.png', function(err, picture) { 
+    fs.readFile(__dirname + './images_profile/1.png', function(err, picture) { 
     if (err) throw err
     var img = new Image
     img.onload = () => {
