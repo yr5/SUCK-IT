@@ -23,9 +23,12 @@ client.on('ready', () => {
 
 client.on('message', message => {
     let sender = message.author;
-    if(!userData[message.author.id]) userData[message.author.id] = {
-        money: 0
-    }
+	if (message.author.bot) return null;
+let sender = message.author;
+let msg = message.content.toUpperCase();
+if (!userData[sender.id]) userData[sender.id] = {}
+if (!userData[sender.id].money) userData[sender.id].money = 0;
+
 if (message.content.startsWith(prefix + 'split')) {
     
     if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
