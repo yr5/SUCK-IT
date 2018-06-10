@@ -189,7 +189,7 @@ client.on('message', message => {
 
 ////////////PROFILE
 
-client.on("message",  message => {
+/*client.on("message",  message => {
      var mentionned = message.mentions.users.first();
       var z;
       if(mentionned){
@@ -358,8 +358,7 @@ client.on("message",  message => {
       })
       })
       }
-      });
-
+      });*/
 
 
 
