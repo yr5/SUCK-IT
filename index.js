@@ -288,7 +288,7 @@ client.on("message",  message => {
                         ctx.drawImage(ava, 13, 60, 175, 175);
 
     setTimeout(function() {
-      fs.readFile(__dirname + '/images_profile/1.png', function(err, picture) {
+      fs.readFile(__dirname + './images_profile/1.png', function(err, picture) {
         if (err) throw err
         var img = new Image
         img.onload = () => {
