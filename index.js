@@ -23,12 +23,7 @@ client.on('ready', () => {
 
 client.on('message', function(message) {
       const member = message.member;
-	const mess = message.content.toLowerCase();
-	const args = message.content.split(' ').slice(1).join(' ');
-	     if (member.guild.id === "340659467911692289") {
-	     	if (message.channel.id === "438811059814531082") {
-}
-}
+
 if(message.member.voiceChannel(member.guild.channels.get('438812681667870742'))) {
             message.member.addRole(message.guild.roles.find("name", "PoP"));
     }
