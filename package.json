@@ -27,6 +27,12 @@
   "homepage": "https://github.com/synicalsyntax/discord.js-heroku#readme",
   "dependencies": {
     "discord.js": "^11.3.0",
-    "ytdl-core": "0.20.4"
+    "ytdl-core": "0.20.4",
+    "fs": "0.0.1-security",
+    "canvas": "1.6.11",
+    "jimp": "0.2.28",
+    "moment": "2.22.2",
+    "pretty-ms": "3.2.0",
+    "random-number": "0.0.9"
   }
 }
