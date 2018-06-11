@@ -50,21 +50,23 @@ client.on('message', message => {
 });
     
 client.on('message', function(message) {
-	 if (!al[message.guild.id]) al[message.guild.id] = {
-        onoff: 'Off'
-    }
-    if (al[message.guild.id].onoff === 'Off') return
+
 
     	 if (!message.channel.guild) return;
 let muteRole1 = message.guild.roles.find("name", "Muted");
      if (!muteRole1) return;
 
   if (message.author.id == client.user.id) return;
+	
   if(JSON.stringify(user).indexOf(message.author.id) == -1) {
     user[message.author.id] = message.createdTimestamp;
     return;
   } else {
     if (Date.now() - user[message.author.id] < 695){
+	    	 if (!al[message.guild.id]) al[message.guild.id] = {
+        onoff: 'Off'
+    }
+    if (al[message.guild.id].onoff === 'Off') return
               message.author.delete
 
       if (JSON.stringify(warn).indexOf(message.author.id) == -1) {
