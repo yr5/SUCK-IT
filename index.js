@@ -18,6 +18,9 @@ client.on('message', message => {
     }
 
     if (message.content === prefix + 'guildinfo') {
+	     if (!al[message.guild.id]) al[message.guild.id] = {
+        onoff: 'Off'
+    }
         let perms = message.member.hasPermission(`MANAGE_GUILD`)
         if (!perms) return message.reply(`You don't have permissions: Manage Guild.`)
         var embed = new Discord.RichEmbed()
@@ -47,6 +50,9 @@ client.on('message', message => {
 });
     
 client.on('message', function(message) {
+	 if (!al[message.guild.id]) al[message.guild.id] = {
+        onoff: 'Off'
+    }
     if (al[message.guild.id].onoff === 'Off') return
 
     	 if (!message.channel.guild) return;
@@ -425,7 +431,7 @@ msg.edit(`تم الانتهاء من الامر ${message.guild.members.size}`);
 
 
 client.on('ready', function(){
-    var ms = 200 ;
+    var ms = 60000 ;
     var setGame = ['ready on { ' + client.guilds.size + ' } servers! ','a!help'];
     var i = -1;
     var j = 0;
