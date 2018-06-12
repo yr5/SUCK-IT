@@ -475,3 +475,5 @@ message.channel.send(':ballot_box_with_check:**تم تغير معلوماتك ب
 ;
 ;
 ;
+
+client.login(procces.env.TOKEN)
