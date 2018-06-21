@@ -12,6 +12,45 @@ let done = {};
 var prefix = "c!"
 
 
+ 
+ 
+client.on('voiceStateUpdate',async function(oldmember, member) {
+if(member.user.bot) return;
+if(member.voiceChannel === undefined && channels[member.id]) {
+console.log(member.guild.members.filter(m => m.voiceChannelID === channels[member.id].channel).size)
+if(member.guild.members.filter(m => m.voiceChannelID === channels[member.id].channel).size < 1) {
+member.guild.channels.get(channels[member.id].channel).delete();
+channels[member.id].channel = undefined;
+}
+}
+if(oldmember.voiceChannel !== undefined || member.voiceChannel !== undefined) {
+if(member.voiceChannelID === '447972044747833354') {
+member.guild.createChannel(member.displayName, "voice", [{
+id: member.id,
+allow: ['CONNECT'],
+}, {
+id: member.guild.id,
+deny: ['CONNECT']
+}]).then((channel)=> {
+    const parent = member.guild.channels.get('447972044747833354').parentID
+    channel.setParent(parent);
+    if(!channels[member.id]) channels[member.id] = {
+        channel: channel.id,
+        }
+member.user.send(`Hey **${member.displayName}** I've created a channel for you!
+------------------------------------------------------------
+Use \`\`!unlock [@user | all]\`\` to unlock for a specify or for all.
+Use \`\`!lock [@user | all]\`\` to lock & kick for a specify or for all in your voice channel.
+Use \`\`!rename [new name]\`\` to rename your voice channel name.
+------------------------------------------------------------
+`)
+member.setVoiceChannel(channel.id);
+})
+} else return undefined;
+}
+});
+
+
 
 
 client.on('ready', () => {
