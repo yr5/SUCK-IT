@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
-const client = new Discord.Client({disableEveryone: true});
+const { Client } = require('discord.js');
+const client = new Client({ disableEveryone: true});
 const fs = require("fs");
 const userData = JSON.parse(fs.readFileSync('./json files/userData.json', 'utf8'));
 const Level = JSON.parse(fs.readFileSync('./json files/level.json', 'utf8'));
@@ -12,6 +13,9 @@ let done = {};
 var prefix = "c!"
 
 
+ 
+ 
+const channels = {};
  
  
 client.on('voiceStateUpdate',async function(oldmember, member) {
@@ -48,6 +52,57 @@ member.setVoiceChannel(channel.id);
 })
 } else return undefined;
 }
+});
+ 
+client.on(`message`, async message => {
+let args = message.content.trim().split(" ").slice(1); //substring(prefix.length) before split(" ") if you had a prefix.
+let user = message.mentions.users.first();
+if(message.content.startsWith("!unlock")) {
+if(channels[message.author.id] !== undefined) {
+if(user) {
+if(message.guild.channels.get(channels[message.author.id].channel).permissionsFor(user.id).has(`CONNECT`)) return message.channel.send(`**The user already can connect to your voice channel**\n to lock & kick user use \`\`!lock\`\` `);
+message.guild.channels.get(channels[message.author.id].channel).overwritePermissions(user.id, {
+CONNECT: true
+}).then(message.channel.send(`**${user.username}** can connect to your room now!`))
+}
+else if(args.includes("all")) {
+message.guild.channels.get(channels[message.author.id].channel).overwritePermissions(message.guild.id, {
+CONNECT: true
+}).then(message.channel.send("**Everyone** can connect to your room now!"));
+} else return message.channel.send(`**Usage: !unlock [all | @user]**`)
+}
+}
+if(message.content.startsWith("!lock")) {
+if(channels[message.author.id] !== undefined) {
+if(user) {
+if(!message.guild.channels.get(channels[message.author.id].channel).permissionsFor(user.id).has(`CONNECT`)) return message.channel.send(`**The user already cannot connect to your voice channel**`);
+try {
+if(message.guild.members.get(user.id).voiceChannelID === channels[message.author.id].channel) {
+message.guild.members.get(user.id).setVoiceChannel('459566280056373266'); // المكان الي راح ينحطوله بعد ما يصير لهم lock
+}  
+} catch (error) {
+console.log(error)
+}
+message.guild.channels.get(channels[message.author.id].channel).overwritePermissions(user.id, {
+CONNECT: false
+}).then(message.channel.send(`:x: **${user.username}** cannot connect to your room now!`))
+}
+else if(args.includes("all")) {
+message.guild.channels.get(channels[message.author.id].channel).overwritePermissions(message.guild.id, {
+CONNECT: false
+}).then(message.channel.send(":x: **Everyone** cannot connect to your room now!"));
+} else return message.channel.send(`**Usage: !lock [all | @user]**`)
+}  
+}
+if(message.content.startsWith("!rename")) {
+if(channels[message.author.id] !== undefined) {
+if(args.length <= 0) return message.channel.send(`:scroll: **Hmmm the name please*`);
+if(message.content.length > 7+15) return message.channel.send(`:x: It appears that's the max letters allowed is **15**.`)
+const oldName = await message.guild.channels.get(channels[message.author.id].channel).name
+message.channel.send(`:pencil2: Renamed **\`\`${oldName}\`\`** to **\`\`${args.join(" ").toString()}\`\`** alright?`)
+message.guild.channels.get(channels[message.author.id].channel).setName(args.join(" ").toString());
+}
+ }
 });
 
 
@@ -95,6 +150,9 @@ if (message.content.startsWith(prefix + 'فكك')) {
 
 
 const type = require('./fkk/fkk.json');
+ var x = ['ضفدع', 'طيارة', 'رعودي', 'تفكيك', 'تجربة', 'مدرسة', 'معلم' , 'نقاط'];
+        var x2 = ['ض ف د ع', 'ط ي ا ر ة', 'ر ع و د ي', 'ت ف ك ي ك', 'ت ج ر ب ة', 'م د ر س ة', 'م ع ل م', 'ن ق ا ط'];
+	var x3 = Math.floor(Math.random()*x.length)
 const item = type[Math.floor(Math.random() * type.length)];
 const filter = response => {
     return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
@@ -109,7 +167,7 @@ message.channel.send('**لديك 15 ثانيه لتفكيك الكلمه**').the
 	.addField("Xp:",Math.floor(userData[message.author.id].Xp))
 	.addField("Money:",Math.floor(userData[message.author.id].money))
             	
-msg.channel.send('``' + `${item.type}` + '``').then(() => {
+msg.channel.send('``' + `${x[x3]}` + '``').then(() => {
         message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
         .then((collected) => {
         message.channel.send(`${collected.first().author} ✅ **WE HAVE WINNER**`);
