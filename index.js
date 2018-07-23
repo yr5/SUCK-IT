@@ -24,9 +24,7 @@ if (message.content === "اجر") {
 });
 
 
-client.on('ready', () = {
-  console.log(`Logged in as ${client.user.tag}!`);
-});
+
          client.on('message', message = {
             if (message.content === 'غووببببلا22') {
               message.channel.send('و عليكم السلام');
