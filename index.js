@@ -7,7 +7,14 @@ console.log("The Welcome Is ready");
 
 
 
+         client.on('message', message = {
+            if (message.content === 'غووببببلا22') {
+              message.channel.send('و عليكم السلام');
+              
+               
 
+            }
+});
 
 
 client.on('message', message => {
@@ -25,13 +32,6 @@ if (message.content === "اجر") {
 
 
 
-         client.on('message', message = {
-            if (message.content === 'غووببببلا22') {
-              message.channel.send('و عليكم السلام');
-              
-               
 
-            }
-});
 
 client.login(process.env.AKA)
