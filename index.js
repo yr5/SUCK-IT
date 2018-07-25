@@ -13,7 +13,7 @@ console.log("The Welcome Is ready");
 client.on('message', message => {
       var ms = 12000;
         let timer = Math.floor(Math.random() * (10000 - 5000 + 1)) + 5000
-  let words = [`الله اكبر`,`الحمدالله`,`سبحان الله`]
+  let words = [`Bad`,`I'm`,`You`,`Know`,`i Think`,`عيب`,`تااااااتسموكي`,`913`,`Back I'm بالعربي تاتسموكي124123`]
 if (message.content === "اجر") {
   
        setInterval (function () {
